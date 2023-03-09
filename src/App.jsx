@@ -6,7 +6,7 @@ import './index.scss';
 const fileSize = 825.63;
 
 const getRandomNumber = () => {
-  return Number((Math.random() * 1).toFixed(2))
+  return Number((Math.random() * 10).toFixed(2))
 }
 
 const App = () => {
@@ -66,7 +66,11 @@ const Dialog = (props) => {
   return (
     <div className={`dialog ${tnum ? 'tnum' : ''}`}>
       <p className='title'>Downloading update</p>
-      <input type="range" name="" id="" value={progress.toFixed(2)} max={fileSize} onChange={handleRangeChange} />
+      <div className="progress-bar">
+        <div className="progress"
+          style={{ left: `${progress.toFixed(2) * 100 / fileSize}%` }}
+        ></div>
+      </div>
       <p className='progress'>
         {progress.toFixed(2)}MB / {fileSize}MB [{speed.toFixed(1)}MB/s]
       </p>
